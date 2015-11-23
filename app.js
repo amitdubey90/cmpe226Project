@@ -1,12 +1,15 @@
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+
 
 //set-up connection to mongodb
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/cmpe226catalog');
+//mongoose.connect('mongodb://localhost/cmpe226catalog');
 
 //import mongoose models
 require('./model/catalogModel');
@@ -14,6 +17,7 @@ require('./model/catalogModel');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var catalog = require('./routes/catalog');
+
 
 //init express app
 var app = express();
@@ -27,6 +31,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  cookie: {
+    path    : '/',  // important !!
+    httpOnly: false,
+    maxAge  : 24*60*60*1000
+  },
+  secret: '1234567890QWERT'
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
