@@ -9,4 +9,4 @@ var productDetailSchema = new mongoose.Schema({
   	details : [mongoose.Schema.Types.Mixed]
 });
 
-mongoose.model('productcatalogs', productDetailSchema);
+mongoose.model('catalogs', productDetailSchema);
