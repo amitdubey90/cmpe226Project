@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Catalog</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Bootstrap Core CSS -->
+    
+  </head>
+  <body ng-app='catalogApp'> 
+    <div class="page-header navbar-fixed-top">
+      <h1> Welcome <small>To Chor Bazar</small></h1>
+      <div id="wrapper">
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="container" id="main" >
+                <div class="row">     
+                  hahah
+                  <%= productList%>
+                  <% for(var i=0; i< productList.length; i++) {%>
+                  <div class="col-sm-4">
+                    <a href="../product/<%=productList[i]._id%>" style="text-decoration: none">
+                      <div class="panel panel-default" >
+                        <div class="panel-thumbnail"><img src="<%=productList[i].imageUrl%>" class="img-responsive"></img></div>
+                        <div class="panel-body" >
+                          <p class="lead"> <%= productList[i].productName%></p>
+                          <p> <%= productList[i].price%></p>
+                        </div>
+                      </div>
+                    </a>
+                  </div><!--/col-->
+                  <% } %>
+                  <br>
+                </div><!--row-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+      </div>
+      <!-- /#wrapper -->
+    </div> 
+  </body>
+</html>

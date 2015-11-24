@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalog</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Bootstrap Core CSS -->
+    
+</head>
+<body> 
+    <div class="page-header navbar-fixed-top">
+      <h1> Welcome <small>To Chor Bazar</small></h1>
+      <div id="wrapper">
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-sm-7">
+                            <p class="lead">
+                                <%=productDetail.shortDesc%> 
+                            </p>
+                        </div>   
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">                            
+                            <img src="<%=productDetail.imageUrl%>" class="img-thumbnail img-responsive"/></div>
+                            <div class="col-sm-6">
+                                <p class="text-muted"><small><%=productDetail.productName%></small></p>
+                                <table class="table">
+                                    <tbody>
+                                        <% details = productDetail.details[0];
+                                        for(key in details) {%>
+                                            <tr>
+                                                <td><%=key%></td>
+                                                <td><%=details[key]%></td>
+                                            </tr>
+                                        <% } %>
+                                        <tr>
+                                            <td colspan= 2 ><a href="#">BUY</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+</div> 
+</body>
+</html>
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">

@@ -6,6 +6,7 @@ var productDetailSchema = new mongoose.Schema({
   	identifier : String,
   	shortDesc: String,
   	price: Number,
+  	imageUrl :  String,
   	details : [mongoose.Schema.Types.Mixed]
 });
 

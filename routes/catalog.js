@@ -11,12 +11,12 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/category/:category', function(req, res, next) {
-	catalog.find({ "category" : req.param('category')}, {'productName' :1 , 'shortDesc': 1 , 'price' : 1} ,
+	catalog.find({ "category" : req.param('category')}, {'productName' :1 , 'shortDesc': 1 , 'price' : 1, 'imageUrl' : 1} ,
 		function(err, data){
 				if (err) { return next(err); }
 	   			if (!data) { return next(new Error("can't find products in category")); }
 			   	
-			    res.json(data);
+			    res.render('categoryView', { productList : data, category : req.param('category')} )
 			});
 });
 
@@ -26,7 +26,7 @@ router.get('/product/:productId', function(req, res, next) {
 			if (err) { return next(err); }
 	   			if (!data) { return next(new Error("can't find product")); }
 			   
-			    res.json(data);
+			    res.render('productDetailView', {productDetail : data});
 		});
 });
 
