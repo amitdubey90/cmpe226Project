@@ -48,34 +48,40 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/user/login">User Login</a>
+                        <% 
+                            if(req.session.loggedIn === true) {
+                        %>
+                                <a href="/user/details/"><%= req.session.username %></a>                      
+                        <% } else { %>
+                                <a href="/user/login">Login</a>
+                        <% } %>
                     </li>
                     <li>
                         <a href="/user/registration">Sign Up</a>
                     </li>
-                    <li>
-                        <a href="/user/adminLogin">Admin Login</a>
-                    </li>
-                    <!-- <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Category <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                                <a href="/browse/category/phone">Phones</a>
                             </li>
                             <li>
-                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                                <a href="#">Category 2</a>
                             </li>
                             <li>
-                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
+                                <a href="#">Category 3</a>
                             </li>
                             <li>
-                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
+                                <a href="#">Category 4</a>
                             </li>
                             <li>
-                                <a href="portfolio-item.html">Single Portfolio Item</a>
+                                <a href="#">Category 5</a>
                             </li>
                         </ul>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -95,13 +101,13 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <div class="fill" style="background-image:url('http://i.imgur.com/iS4dua7.jpg&text=Slide One');"></div>
                 <div class="carousel-caption">
                     <h2>Caption 1</h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="fill" style="background-image:url('http://i.imgur.com/cyTyJEu.png&text=Slide Two');"></div>
                 <div class="carousel-caption">
                     <h2>Caption 2</h2>
                 </div>
