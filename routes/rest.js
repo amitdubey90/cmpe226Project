@@ -115,23 +115,112 @@ var saveOrders=function(oId,pId,price,quan){
         });
 }
 
+var addOrder = function(queryString, callback)
+{
+
+    connection.query(queryString, function(err, result)
+    {
+        if (err)
+        {
+            console.log("ERROR : " + err);
+        }
+        else
+        {
+            callback(result);
+        }
+    });
+};
+
+function addPayment(query,arr,callback)
+{
+    connection.query(query,arr,function(err, result)
+    {
+        if (err) 
+            callback(err,null);
+        else
+            callback(null,result.insertId);
+
+    });
+
+};
+
+function addOrders(query,arr,callback)
+{
+    connection.query(query,arr, function(err, result)
+    {
+        console.log(arr);
+        if (err) 
+            callback(err,null);
+        else
+            callback(null,result.insertId);
+
+    });
+
+};
+
+function addOrderDetails(query,arr,callback)
+{
+    connection.query(query,arr, function(err, result)
+    {
+        console.log(arr);
+        if (err) 
+            callback(err,null);
+        else
+            callback(null,result.insertId);
+
+    });
+
+};
+
 /*
  * POST to add order.
  */
+var payId;
 app.post('/addorder', function(req, res) {
-    var orderId = guid();
-    //var paymentId= guid();
+    console.log(req);
+
     var orderDate= new Date();
     var shippingDate= new Date() + 2;
     var customerId = req.body.customerId;
     var productId = req.body.productId;
-    var quanity = req.body.quanity;
+    var quanity = req.body.quantity;
     var totalprice = req.body.price;
     var pending="Pending";
     var paymentType=req.body.paymenttype;
 
-    maxId();
-    console.log(id);
+    console.log(paymentType);
+    console.log(customerId);
+
+    var paymentQuery="INSERT INTO payment(PaymentType, PaymentApproved) VALUES(?,?)";
+    var orderQuery="INSERT INTO orders(CustomerId, PaymentId, OrderDate, ShippingDate, OrderStatus, ShipperId) VALUES(?,?,?,?,?,?)";
+    var orderDetailsQuery="INSERT INTO orderdetails(OrderId, ProductId, TotalPrice, Quantity) VALUES(?,?,?,?)";
+    addPayment(paymentQuery,[paymentType,1],function(err,data){
+        if (err) {
+            // error handling code goes here
+            console.log("ERROR : ",err);            
+        } else {
+            console.log(data);
+            addOrders(orderQuery,[customerId,data,orderDate,shippingDate,pending,1],function(err,data1){
+                 if (err) {
+                     // error handling code goes here
+                     console.log("ERROR : ",err);            
+                 } else {            
+                    console.log(data1);
+                        addOrderDetails(orderDetailsQuery,[data1,productId,totalprice,quanity],function(err,data1){
+                            if (err) {
+                                 // error handling code goes here
+                                console.log("ERROR : ",err);            
+                             } else {            
+                                     console.log(data1);
+
+                             } 
+                        });
+                 } 
+        });
+        } 
+
+    });
+    
     //savePaymentId(idtouse,"Credit",1);
     //saveOrderDetails(maxId("OrderId","orders")+1,customerId,productId,orderDate,shippingDate,pending);
     //saveOrders(maxId("OrderId","orders"),productId,totalprice,quanity);
