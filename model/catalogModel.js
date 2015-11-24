@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var productSchema = new mongoose.Schema({
+var productDetailSchema = new mongoose.Schema({
 	productName: String,
 	category : String,
   	identifier : String,
@@ -9,4 +9,4 @@ var productSchema = new mongoose.Schema({
   	details : [mongoose.Schema.Types.Mixed]
 });
 
-mongoose.model('productcatalogs', productSchema);
+mongoose.model('catalogs', productDetailSchema);

@@ -9,7 +9,7 @@ var session = require('express-session');
 
 //set-up connection to mongodb
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://localhost/cmpe226catalog');
+mongoose.connect('mongodb://cmpe226:project226@ds057934.mongolab.com:57934/productcatalog');
 
 //import mongoose models
 require('./model/catalogModel');

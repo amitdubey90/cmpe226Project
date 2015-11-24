@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
-var catalog = mongoose.model('productcatalogs');
+var catalog = mongoose.model('catalogs');
 
 /* Remove when testing is complete */
 router.get('/', function(req, res, next) {
