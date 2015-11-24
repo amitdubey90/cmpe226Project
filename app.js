@@ -17,6 +17,7 @@ require('./model/catalogModel');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var catalog = require('./routes/catalog');
+var rest = require('./routes/rest');
 
 
 //init express app
@@ -43,7 +44,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/browse', catalog)
+app.use('/browse', catalog);
+app.use('/rest', rest);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
