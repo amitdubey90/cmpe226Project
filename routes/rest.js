@@ -65,71 +65,6 @@ var resdata={
     "response":1
 }
 
-var idColName;
-var tableName;
-
-var maxId=function(callback){
-    var query='select max('+idColName+') as lavda from '+tableName+'';
-    connection.query(query,function(err, result){
-                    console.log(query);
-                    callback(err,result);
-
-    });
-}
-
-var savePaymentId=function(payId,payType,payStatus){
-    console.log(payId);
-    console.log(payType);
-    console.log(payStatus);
-
-    connection.query("INSERT INTO payment VALUES(?,?,?)",[payId,payType,payStatus],function(err){
-                    if(err){
-                        throw err;
-                            }
-                    else{
-                        return;
-                    }  
-
-    });
-}
-
-var saveOrderDetails=function(oId,cId,pId,oDate,sDate,pend){
-    connection.query("INSERT INTO orders VALUES(?,?,?,?,?,?,?)",[oId,cId,pId,oDate,sDate,pend,23653],function(err){
-                    if(err){
-                        throw err;
-                            }
-                    else{
-                        return;
-                    }  
-    });
-}
-
-var saveOrders=function(oId,pId,price,quan){
-    connection.query("INSERT INTO orderdetails VALUES(?,?,?,?)",[oId,pId,price,quan],function(err){
-            if(err){
-                throw err;
-            }
-            else{
-                return;
-            }
-        });
-}
-
-var addOrder = function(queryString, callback)
-{
-
-    connection.query(queryString, function(err, result)
-    {
-        if (err)
-        {
-            console.log("ERROR : " + err);
-        }
-        else
-        {
-            callback(result);
-        }
-    });
-};
 
 function addPayment(query,arr,callback)
 {
@@ -211,7 +146,8 @@ app.post('/addorder', function(req, res) {
                                  // error handling code goes here
                                 console.log("ERROR : ",err);            
                              } else {            
-                                     console.log(data1);
+                                     //console.log(data1);
+                                     res.json("{status:ok}");
 
                              } 
                         });
@@ -221,12 +157,7 @@ app.post('/addorder', function(req, res) {
 
     });
     
-    //savePaymentId(idtouse,"Credit",1);
-    //saveOrderDetails(maxId("OrderId","orders")+1,customerId,productId,orderDate,shippingDate,pending);
-    //saveOrders(maxId("OrderId","orders"),productId,totalprice,quanity);
-
-    //res.json(maxId("OrderId","orders"));
-    res.json("ok");
+    //res.json("ok");
     
 });
 
