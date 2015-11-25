@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var apptitle = 'Ecommerce App Cmpe226';
+var id;
 
 // SQL
 var mysql = require('mysql');  
@@ -61,6 +62,8 @@ User.prototype.save = function save(callback) {
      connection.query(cmd1, [user.username, user.LastName,user.Phone, user.email, user.Street, user.City, user.Zipcode, user.State, user.Country], function (err,result) {  
             console.log(cmd1);
             console.log("Second query "+ err);
+            id=result.insertId;
+            
                                  
         });   
   var connection1 = mysql.createConnection({
@@ -178,6 +181,7 @@ router.post("/user/create", function (req, res) {
     });
 
     console.log("_______________");
+    console.log("inserted customer id"+id);
     console.log(user);
 
    user.save(function (err, sql_user) {
@@ -186,7 +190,8 @@ router.post("/user/create", function (req, res) {
     	console.dir(user);
         req.session.loggedIn = true;
         req.session.username = user.username;
-		console.log('loggedIn ' + req.session.loggedIn);
+        req.session.email=user.email;
+		    console.log('loggedIn ' + req.session.loggedIn);
 
       return;
 
