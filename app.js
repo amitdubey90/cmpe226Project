@@ -19,6 +19,7 @@ var users = require('./routes/users');
 var catalog = require('./routes/catalog');
 var rest = require('./routes/rest');
 var adminDashBoard = require('./routes/adminDashBoard');
+var adminrest= require('./routes/adminrest');
 
 
 //init express app
@@ -53,6 +54,8 @@ app.use('/users', users);
 app.use('/browse', catalog);
 app.use('/rest', rest);
 app.use('/adminDashBoard', adminDashBoard);
+app.use('/adminrest', adminrest);
+
 
 
 // catch 404 and forward to error handler

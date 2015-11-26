@@ -19,9 +19,9 @@ app.get('/admin', function(req,res) {
 });
 
 app.get('/admin/orders', function(req,res){ 
-    connection.query("SELECT orders.OrderId, OrderDate, ShippingDate,
-     OrderStatus,ProductId, TotalPrice, Quantity from orders, 
-        orderdetails where orders.OrderId = orderdetails.OrderId;", function (err,result) {  
+
+    var query="SELECT orders.OrderId, OrderDate, ShippingDate, OrderStatus,ProductId, TotalPrice, Quantity from orders, orderdetails where orders.OrderId = orderdetails.OrderId;";
+    connection.query(query, function (err,result) {  
         if(err){
             throw err;
         }

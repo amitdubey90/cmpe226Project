@@ -7,6 +7,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/customerInfo', function(req, res, next) {
+
+
+
+
   res.render('customerInfo');
 });
 
