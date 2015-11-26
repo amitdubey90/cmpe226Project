@@ -2,16 +2,6 @@ var mysql = require("mysql");
 var express = require('express');
 var app = express.Router();
 
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
-}
-
 connection = mysql.createPool({
         host     : 'cmpe226.cpodi2zqj9hl.us-east-1.rds.amazonaws.com',
         user     : 'cmpe226',
