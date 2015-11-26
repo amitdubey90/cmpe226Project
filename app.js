@@ -42,6 +42,12 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+    res.locals.req = req;
+    res.locals.res = res;
+    next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/browse', catalog);
