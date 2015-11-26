@@ -89,6 +89,19 @@ User.prototype.save = function save(callback) {
 
 };    
 
+User.prototype.getAdminByUsername = function getAdminByUsername(callback) {  
+
+   var user = {  
+        username: this.username,  
+        password: this.password,
+    };
+    var cmd = 'select * from cmpe226.admin where username = ?';  
+    connection.query(cmd, [user.username], function (err, result) {  
+        console.log(cmd);
+        callback(err,result);                      
+    });           
+};  
+
 User.prototype.getUserNumByName = function getUserNumByName(username, callback) {  
     var cmd = 'select COUNT(1) AS num from user info where username = ?';
     connection.query(cmd, [username], function (err, result) {  
@@ -97,7 +110,7 @@ User.prototype.getUserNumByName = function getUserNumByName(username, callback) 
     });         
 };  
 User.prototype.getUserByEmail = function getUserByEmail(callback) {  
-    console.log("asdasdsadasdasd");
+    console.log("getUserByEmail");
      var user = {  
         username: this.username,  
         password: this.password,
@@ -217,6 +230,62 @@ router.get('/user/login', function(req, res) {
 	res.render('login',{title: apptitle});  
 });
 
+
+router.get('/user/adminLogin', function(req, res) {
+ /* var username = "";
+  if (req.session.username) {
+    username = req.session.username;
+  } */
+  res.render('adminLogin',{title: apptitle});  
+});
+
+
+
+router.post('/user/adminLogin', function(req, res) {
+    console.log("admin login");
+  var admin1 = new User({
+        username:req.body.username,
+        password:req.body.password,
+       // email:req.body.email,
+    });
+
+
+admin1.getAdminByUsername(function (err, results) {
+         
+       if(results == '') {   
+            res.locals.error = 'Admin does not exist! ';  
+            res.render('adminLogin',{title: apptitle});  
+            return;  
+        }  
+
+        var username1=admin1.username;
+        var username2=results[0].username;
+        var pass1=admin1.password;
+        var pass2=results[0].password;
+ 
+            if(username1==username1 && pass1==pass2){
+            console.log("SUCESSS");
+            res.locals.error = '';
+            res.locals.username = username2;
+            req.session.username = username2;   
+            req.session.loggedIn = true;
+            console.log(req.session.username);                         
+            res.redirect('/adminDashBoard');  
+            return;  
+          
+        } else {  
+
+  res.locals.error = 'Admin Username or password error.';  
+            res.render('adminLogin',{title: apptitle});  
+            return;  
+
+          
+        }      
+    }); 
+
+
+
+});
 router.post('/user/login', function(req, res) {
     console.log("asdsadas");
 	var user1 = new User({
@@ -236,14 +305,13 @@ router.post('/user/login', function(req, res) {
         var pass1=user1.password;
         var pass2=results[0].userpass;
         var username2=results[0].name;
-//console.log(user1.email+"@"+user1.password+"@");
+    //console.log(user1.email+"@"+user1.password+"@");
   //      console.log(results[0].email+"@"+results[0].userpass+"@");
         //if((results[0].email == user1.email) && (results[0].userPass == user1.password)) {  
             if(email1==email2 && pass1==pass2){
             console.log("SUCESSS");
             res.locals.error = '';
             res.locals.username = username2;
-
             req.session.username = username2;   
             req.session.loggedIn = true;
             console.log(req.session.username);                         

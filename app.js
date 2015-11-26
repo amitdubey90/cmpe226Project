@@ -18,6 +18,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var catalog = require('./routes/catalog');
 var rest = require('./routes/rest');
+var adminDashBoard = require('./routes/adminDashBoard');
 
 
 //init express app
@@ -26,7 +27,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -46,6 +46,8 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/browse', catalog);
 app.use('/rest', rest);
+app.use('/adminDashBoard', adminDashBoard);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
