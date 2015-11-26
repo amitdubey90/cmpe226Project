@@ -37,7 +37,8 @@ app.get('/admin/customers', function(req,res){
             throw err;
         }
         else{
-        res.json(result);
+        //res.json(result);
+        res.send(JSON.stringify(result));
         }                  
     });
 });
