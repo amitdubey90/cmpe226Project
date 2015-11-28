@@ -1,3 +1,60 @@
-<h1>
-Customer Information
-</h1>
+
+
+<head>
+
+<style>
+
+table { 
+color: #333; /* Lighten up font color */
+font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+width: 640px; 
+border-collapse: 
+collapse; border-spacing: 0; 
+}
+
+td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+th {
+background: gray; /* Light grey background */
+font-weight: bold; /* Make sure they're bold */
+}
+
+td {
+background: #FAFAFA; /* Lighter grey background */
+text-align: center; /* Center our text */
+}
+</style>
+
+</head>
+
+<h1>Customer Information</h1>
+
+<table>
+<tr>
+<th>CustomerId</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Phone</th>
+<th>Email</th>
+<th>Street</th>
+<th>City</th>
+<th>Zipcode</th>
+<th>State</th>
+<th>Country</th>
+<% for(var i=0; i < data.length; i++) { %>
+
+</tr>
+   <tr>
+     <td><%= data[i].CustomerId %></td>
+     <td><%= data[i].FirstName %></td> 		
+     <td><%= data[i].LastName %></td>
+     <td><%= data[i].Phone %></td>
+     <td><%= data[i].Email %></td>
+     <td><%= data[i].Street %></td>
+     <td><%= data[i].City %></td>
+     <td><%= data[i].Zipcode %></td>
+     <td><%= data[i].State %></td>
+     <td><%= data[i].Country %></td>
+    </tr>
+<% } %>
+</table>

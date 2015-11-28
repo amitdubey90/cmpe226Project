@@ -8,8 +8,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/customerInfo', function(req, res, next) {
 
-
-
+console.log("asdsadsadsadsadsadsa");
+ console.log("sadsdada"+res[0]);
 
   res.render('customerInfo');
 });

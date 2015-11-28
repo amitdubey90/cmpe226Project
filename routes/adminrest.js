@@ -38,7 +38,8 @@ app.get('/admin/customers', function(req,res){
         }
         else{
         //res.json(result);
-        res.send(JSON.stringify(result));
+        console.log("bazar"+JSON.stringify(result));
+        res.render('customerInfo',{data: result});
         }                  
     });
 });
