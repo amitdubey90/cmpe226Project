@@ -1,0 +1,47 @@
+
+
+<head>
+
+ <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+
+</head>
+
+<h1>Order Information</h1>
+
+<table class="table">
+<tr class="warning">
+<th>OrderId</th>
+<th>OrderDate</th>
+<th>ShippingDate</th>
+<th>orderStatus</th>
+<th>CustomerId</th>
+<th>Customer FirstName</th>
+<th>Customer LastName</th>
+<th>ShipperId</th>
+
+<% for(var i=0; i < data.length; i++) { %>
+
+
+
+</tr>
+   <tr class="info">
+     <td><%= data[i].OrderId %></td>
+     <td><%= data[i].OrderDate %></td> 		
+     <td><%= data[i].ShippingDate %></td>
+     <td><%= data[i].orderStatus %></td>
+     <td><%= data[i].CustomerId %></td>
+     <td><%= data[i].FirstName %></td>
+     <td><%= data[i].LastName %></td>
+     <td><%= data[i].ShipperId %></td>
+    </tr>
+<% } %>
+</table>

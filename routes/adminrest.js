@@ -20,13 +20,23 @@ app.get('/admin', function(req,res) {
 
 app.get('/admin/orders', function(req,res){ 
 
-    var query="SELECT orders.OrderId, OrderDate, ShippingDate, OrderStatus,ProductId, TotalPrice, Quantity from orders, orderdetails where orders.OrderId = orderdetails.OrderId;";
+    //var query="SELECT orders.OrderId, OrderDate, ShippingDate, OrderStatus,ProductId, TotalPrice, Quantity from orders, orderdetails where orders.OrderId = orderdetails.OrderId;";
+
+  /* var query=  "SELECT o.orderId, o.OrderDate, o.ShippingDate, o.OrderStatus, p.ProductName, p.productDesc, c.CategoryName "+
+            "FROM orders o INNER JOIN orderdetails od ON o.OrderId = od.orderId INNER JOIN products p ON od.ProductId = p.ProductId "+
+            "INNER JOIN category c ON p.CategoryId = c.CategoryId";*/
+
+        var query=    "SELECT o.OrderId, o.OrderDate, o.ShippingDate, o.orderStatus, c.CustomerId, c.FirstName, "+
+            "c.LastName,  s.ShipperId FROM customers c INNER JOIN orders o ON o.CustomerId = c.CustomerId "+
+            "INNER JOIN shippers s ON o.ShipperId = s.ShipperId ";  
+
+
     connection.query(query, function (err,result) {  
         if(err){
             throw err;
         }
         else{
-        res.json(result);
+        res.render('orderInformation',{data: result});
         }                    
     });
 });
@@ -45,12 +55,14 @@ app.get('/admin/customers', function(req,res){
 });
 
 app.get('/admin/products', function(req,res){
-	connection.query("select * from products", function (err,result) {  
+
+    var query="select p.ProductId, p.ProductName, p.ProductDesc, p.Price, c.CategoryName, c.Description from products p INNER JOIN category c on p.CategoryId=c.CategoryId";
+	connection.query(query, function (err,result) {  
          if(err){
             throw err;
         }
         else{
-        res.json(result);
+        res.render('productInformation',{data: result});
         }                    
     });
 });
