@@ -20,12 +20,14 @@
 <table class="table">
 <tr class="warning">
 <th>OrderId</th>
+<th>ProductId</th>
+<th>Quantity</th>
+<th>Total Order Price</th>
 <th>OrderDate</th>
 <th>ShippingDate</th>
 <th>orderStatus</th>
+<th>PaymentId</th>
 <th>CustomerId</th>
-<th>Customer FirstName</th>
-<th>Customer LastName</th>
 <th>ShipperId</th>
 
 <% for(var i=0; i < data.length; i++) { %>
@@ -35,12 +37,17 @@
 </tr>
    <tr class="info">
      <td><%= data[i].OrderId %></td>
+          <td><%= data[i].ProductId %></td>
+     <td><%= data[i].Quantity %></td>
+     <td><%= data[i].TotalPrice %></td>
+
+
      <td><%= data[i].OrderDate %></td> 		
      <td><%= data[i].ShippingDate %></td>
      <td><%= data[i].orderStatus %></td>
+     <td><%= data[i].PaymentId %></td>
+
      <td><%= data[i].CustomerId %></td>
-     <td><%= data[i].FirstName %></td>
-     <td><%= data[i].LastName %></td>
      <td><%= data[i].ShipperId %></td>
     </tr>
 <% } %>

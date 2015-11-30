@@ -26,9 +26,9 @@ app.get('/admin/orders', function(req,res){
             "FROM orders o INNER JOIN orderdetails od ON o.OrderId = od.orderId INNER JOIN products p ON od.ProductId = p.ProductId "+
             "INNER JOIN category c ON p.CategoryId = c.CategoryId";*/
 
-        var query=    "SELECT o.OrderId, o.OrderDate, o.ShippingDate, o.orderStatus, c.CustomerId, c.FirstName, "+
-            "c.LastName,  s.ShipperId FROM customers c INNER JOIN orders o ON o.CustomerId = c.CustomerId "+
-            "INNER JOIN shippers s ON o.ShipperId = s.ShipperId ";  
+        var query=    "SELECT o.OrderId, od.ProductId, od.Quantity, od.TotalPrice, o.OrderDate, o.ShippingDate, o.orderStatus, o.PaymentId, c.CustomerId, "+
+            "s.ShipperId FROM customers c INNER JOIN orders o ON o.CustomerId = c.CustomerId "+
+            "INNER JOIN shippers s ON o.ShipperId = s.ShipperId "+ "INNER JOIN orderdetails od on o.orderId=od.orderId"
 
 
     connection.query(query, function (err,result) {  
