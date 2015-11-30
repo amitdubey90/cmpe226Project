@@ -2,35 +2,23 @@
 
 <head>
 
-<style>
+ <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-table { 
-color: #333; /* Lighten up font color */
-font-family: Helvetica, Arial, sans-serif; /* Nicer font */
-width: 640px; 
-border-collapse: 
-collapse; border-spacing: 0; 
-}
+    <!-- Custom CSS -->
+    <link href="/css/modern-business.css" rel="stylesheet">
 
-td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-th {
-background: gray; /* Light grey background */
-font-weight: bold; /* Make sure they're bold */
-}
 
-td {
-background: #FAFAFA; /* Lighter grey background */
-text-align: center; /* Center our text */
-}
-</style>
 
 </head>
 
 <h1>Customer Information</h1>
 
-<table>
-<tr>
+<table class="table">
+<tr class="warning">
 <th>CustomerId</th>
 <th>FirstName</th>
 <th>LastName</th>
@@ -44,7 +32,7 @@ text-align: center; /* Center our text */
 <% for(var i=0; i < data.length; i++) { %>
 
 </tr>
-   <tr>
+   <tr class="info">
      <td><%= data[i].CustomerId %></td>
      <td><%= data[i].FirstName %></td> 		
      <td><%= data[i].LastName %></td>
