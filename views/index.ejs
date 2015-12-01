@@ -25,192 +25,195 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <![endif]-->
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">Chor Bazar</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <% 
-                        if(req.session.loggedIn === true) {
-                            %>
-                            <li>
-                                <a href="/user/details/"><%= req.session.username %></a>                      
-                            </li>
-                            <li>
-                                <a href="/user/logout">Logout</a>
-                            </li>
-                        <% } else { %>
-                            <li>
-                                <a href="/user/login">Login</a>
-                            </li>
-                            <li>
-                                <a href="/user/registration">Sign Up</a>
-                            </li>
-                        <% } %>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-left">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Category <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/browse/category/Beauty">Beauty</a>
-                                </li>
-                                <li>
-                                    <a href="/browse/category/Books">Books</a>
-                                </li>
-                                <li>
-                                    <a href="/browse/category/Electronics">Electronics</a>
-                                </li>
-                                <li>
-                                    <a href="/browse/category/Games">Games</a>
-                                </li>
-                                <li>
-                                    <a href="/browse/category/HomeTools">Home Tools</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container -->
-            </nav>
-
-            <!-- Header Carousel -->
-            <header id="myCarousel" class="carousel slide">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="fill" style="background-image:url('http://i.imgur.com/iS4dua7.jpg&text=Slide One');"></div>
-                        <div class="carousel-caption">
-                            <h2>Caption 1</h2>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="fill" style="background-image:url('http://i.imgur.com/cyTyJEu.png&text=Slide Two');"></div>
-                        <div class="carousel-caption">
-                            <h2>Caption 2</h2>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-                        <div class="carousel-caption">
-                            <h2>Caption 3</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Controls -->
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                    <span class="icon-prev"></span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                    <span class="icon-next"></span>
-                </a>
-            </header>
-
-            <!-- Page Content -->
-            <div class="container">
-
-                <!-- Portfolio Section -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2 class="page-header">Select a category</h2>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="/browse/category/Electronics">
-                            <img class="img-responsive img-portfolio img-hover" src="/images/electronics.jpg" alt="Electronics">
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="portfolio-item.html">
-                            <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="Books">
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="portfolio-item.html">
-                            <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="Beauty">
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="portfolio-item.html">
-                            <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="Games">
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="portfolio-item.html">
-                            <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="Home Tools">
-                        </a>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <hr>
-
-                <!-- Call to Action Section -->
-                <div class="well">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h4>Not a member yet?</h4>
-                        </div>
-                        <div class="col-md-4">
-                            <a class="btn btn-lg btn-default btn-block" href="/user/registration">Sign up Now!</a>
-                        </div>
-                    </div>
-                </div>
-
-                <hr>
-
-                <!-- Footer -->
-                <footer>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <p>Copyright &copy; Your Website 2014</p>
-                        </div>
-                    </div>
-                </footer>
-
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Chor Bazar</a>
             </div>
-            <!-- /.container -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <% 
+                            if(req.session.loggedIn === true) {
+                        %>
+                                <a href="/user/details/"><%= req.session.username %></a>                      
+                        <% } else { %>
+                                <a href="/user/login">Login</a>
+                        <% } %>
+                    </li>
+                    <li>
+                        <a href="/user/registration">Sign Up</a>
+                    </li>
+                     <li>
+                        <a href="user/adminLogin">Admin Login</a>
+                    </li>
+                </ul>
 
-            <!-- jQuery -->
-            <script src="/js/jquery.js"></script>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Category <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/browse/category/phone">Phones</a>
+                            </li>
+                            <li>
+                                <a href="#">Category 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Category 3</a>
+                            </li>
+                            <li>
+                                <a href="#">Category 4</a>
+                            </li>
+                            <li>
+                                <a href="#">Category 5</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-            <!-- Bootstrap Core JavaScript -->
-            <script src="/js/bootstrap.min.js"></script>
+    <!-- Header Carousel -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
-            <!-- Script to Activate the Carousel -->
-            <script>
-            $('.carousel').carousel({
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="fill" style="background-image:url('http://i.imgur.com/iS4dua7.jpg&text=Slide One');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 1</h2>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('http://i.imgur.com/cyTyJEu.png&text=Slide Two');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 2</h2>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 3</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Select a category</h2>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="/browse/category/phone">
+                    <img class="img-responsive img-portfolio img-hover" src="/images/phones.jpg" alt="Phones">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="portfolio-item.html">
+                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                </a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Call to Action Section -->
+        <div class="well">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>Not a member yet?</h4>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-lg btn-default btn-block" href="/user/registration">Sign up Now!</a>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
-            </script>
+    </script>
 
-        </body>
+</body>
 
-        </html>
+</html>
