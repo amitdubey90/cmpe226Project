@@ -10,6 +10,15 @@ connection = mysql.createPool({
         multipleStatements: true
     });
 
+connectionStar = mysql.createPool({
+        host     : 'cmpe226.cpodi2zqj9hl.us-east-1.rds.amazonaws.com',
+        user     : 'cmpe226',
+        password : 'project226',
+        database : 'cmpe226star',
+        multipleStatements: true
+    });
+
+
 var data = {
         "error":1
     };
@@ -40,6 +49,29 @@ app.get('/admin/orders', function(req,res){
         }                    
     });
 });
+
+
+
+app.get('/admin/salesAnalytics', function(req,res){ 
+
+
+
+        var query="SELECT CategoryKey, COUNT(*) AS `num` FROM sales_fact_table GROUP BY CategoryKey order by CategoryKey asc";
+
+
+    connectionStar.query(query, function (err,result) {  
+        if(err){
+            throw err;
+        }
+        else{
+            console.log(result[2].num+"asdasd");
+        res.render('salesAnalytics',{data: result});
+        }                    
+    });
+});
+
+
+
 
 app.get('/admin/customers', function(req,res){ 
     connection.query("select * from customers", function (err,result) {  
