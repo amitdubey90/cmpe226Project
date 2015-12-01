@@ -49,13 +49,15 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/', routes);
+app.use('/user', routes);
 app.use('/users', users);
 app.use('/browse', catalog);
 app.use('/rest', rest);
 app.use('/adminDashBoard', adminDashBoard);
 app.use('/adminrest', adminrest);
-
+app.use('/', function(req, res, next) {
+    res.render('index');
+});
 
 
 // catch 404 and forward to error handler

@@ -47,19 +47,24 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <% 
-                            if(req.session.loggedIn === true) {
-                                %>
+                        <% 
+                        if(req.session.loggedIn === true) {
+                            %>
+                            <li>
                                 <a href="/user/details/"><%= req.session.username %></a>                      
-                                <% } else { %>
+                            </li>
+                            <li>
+                                <a href="/user/logout">Logout</a>
+                            </li>
+                        <% } else { %>
+                            <li>
                                 <a href="/user/login">Login</a>
-                                <% } %>
                             </li>
                             <li>
                                 <a href="/user/registration">Sign Up</a>
                             </li>
-                        </ul>
+                        <% } %>
+                    </ul>
 
                         <ul class="nav navbar-nav navbar-left">
                             <li class="dropdown">
