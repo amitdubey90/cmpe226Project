@@ -102,11 +102,11 @@
                         <h2 class="form-signin-heading">Admin login</h2>
                         <% if (locals.error) { %>
                         <div class="control-group">
-                            <label class="control-label" for="email_input"><%= locals.error %></label>
+                            <label class="control-label" for="adminusername_input"><%= locals.error %></label>
                         </div>
                         <% } %>
                         <label for="adminusername_input" class="sr-only">Username</label>
-                        <input type="email" id="adminusername_input" name="username" class="form-control" placeholder="Username" required autofocus>
+                        <input type="text" id="adminusername_input" name="username" class="form-control" placeholder="Username" required autofocus>
                         <label for="adminpassword_input" class="sr-only">Password</label>
                         <input type="password" id="adminpassword_input" name="password" class="form-control" placeholder="Password" required>
 
