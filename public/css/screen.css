@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+span.color {
+    width: 10px;
+    height: 10px;
+    display: block;
+    border-radius: 50%;
+}
