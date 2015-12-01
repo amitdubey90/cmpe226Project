@@ -66,19 +66,19 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Category <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="/browse/category/Electronics">Phones</a>
+                                        <a href="/browse/category/Beauty">Beauty</a>
                                     </li>
                                     <li>
-                                        <a href="#">Category 2</a>
+                                        <a href="/browse/category/Books">Books</a>
                                     </li>
                                     <li>
-                                        <a href="#">Category 3</a>
+                                        <a href="/browse/category/Electronics">Electronics</a>
                                     </li>
                                     <li>
-                                        <a href="#">Category 4</a>
+                                        <a href="/browse/category/Games">Games</a>
                                     </li>
                                     <li>
-                                        <a href="#">Category 5</a>
+                                        <a href="/browse/category/HomeTools">Home Tools</a>
                                     </li>
                                 </ul>
                             </li>
@@ -92,22 +92,22 @@
             <!-- Page Content -->
             <div class="container">
                 <div class="col-md-4 col-sm-6 col-md-offset-4">
-                
-                <form class="form-signin" action="/user/adminLogin" method="POST">
-                    <h2 class="form-signin-heading">Admin login</h2>
-                    <% if (locals.error) { %>
-                    <div class="control-group">
-                        <label class="control-label" for="email_input"><%= locals.error %></label>
-                    </div>
-                <% } %>
-                    <label for="adminusername_input" class="sr-only">Username</label>
-                    <input type="email" id="adminusername_input" name="username" class="form-control" placeholder="Username" required autofocus>
-                    <label for="adminpassword_input" class="sr-only">Password</label>
-                    <input type="password" id="adminpassword_input" name="password" class="form-control" placeholder="Password" required>
+                    
+                    <form class="form-signin" action="/user/adminLogin" method="POST">
+                        <h2 class="form-signin-heading">Admin login</h2>
+                        <% if (locals.error) { %>
+                        <div class="control-group">
+                            <label class="control-label" for="email_input"><%= locals.error %></label>
+                        </div>
+                        <% } %>
+                        <label for="adminusername_input" class="sr-only">Username</label>
+                        <input type="email" id="adminusername_input" name="username" class="form-control" placeholder="Username" required autofocus>
+                        <label for="adminpassword_input" class="sr-only">Password</label>
+                        <input type="password" id="adminpassword_input" name="password" class="form-control" placeholder="Password" required>
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                </form>
-</div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
                 <hr>
 
                 <!-- Footer -->
