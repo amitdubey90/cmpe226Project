@@ -153,24 +153,11 @@ Country:this.Country,
     });         
 }; 
 
-
-// SQL
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-
-	console.log('loggedIn ' + req.session.loggedIn);
-	if (req.session.loggedIn)
-		res.render('index', { title: apptitle, username: req.session.username});
-	else
-  		res.render('index', { title: apptitle, username: 'User' });
-});
-
-router.get('/user/registration', function (req, res) {
+router.get('/registration', function (req, res) {
     res.render("reg", {title: apptitle});
 });
 
-router.post("/user/create", function (req, res) {
+router.post("/create", function (req, res) {
     var username=req.body.username;
     var lastname=req.body.userlastname;
     var email=req.body.email;
@@ -217,7 +204,8 @@ router.post("/user/create", function (req, res) {
 
 
 });
-router.get('/user/login', function(req, res) {
+router.get('/login', function(req, res) {
+  console.log("GETTING LGOINANOINFIONDFIONSOIFN")
 	var username = "";
 	if (req.session.username) {
 		username = req.session.username;
@@ -226,7 +214,7 @@ router.get('/user/login', function(req, res) {
 });
 
 
-router.get('/user/adminLogin', function(req, res) {
+router.get('/adminLogin', function(req, res) {
  /* var username = "";
   if (req.session.username) {
     username = req.session.username;
@@ -236,7 +224,7 @@ router.get('/user/adminLogin', function(req, res) {
 
 
 
-router.post('/user/adminLogin', function(req, res) {
+router.post('/adminLogin', function(req, res) {
     console.log("admin login");
   var admin1 = new User({
         username:req.body.username,
@@ -281,7 +269,7 @@ admin1.getAdminByUsername(function (err, results) {
 
 
 });
-router.post('/user/login', function(req, res) {
+router.post('/login', function(req, res) {
   console.log("asdsadas");
   var user1 = new User({
     username:req.body.username,
@@ -322,6 +310,14 @@ router.post('/user/login', function(req, res) {
       return;  
     }      
   });
+});
+
+router.get("/logout", function(req, res, next) {
+    if(req.session.loggedIn == true) {
+      req.session.username = '';   
+      req.session.loggedIn = false;
+      res.render('index');
+    }
 });
 
 module.exports = router;
