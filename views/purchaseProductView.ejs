@@ -48,15 +48,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <li>
-                        <% 
-                            if(req.session.loggedIn === true) {
-                        %>
-                                <a href="/user/details/"><%= req.session.username %></a>                      
-                        <% } else { %>
-                                <a href="/user/login">Login</a>
-                        <% } %>
-                    </li>
+                        <a href="/user/login">Login</a>
                     </li>
                     <li>
                         <a href="/user/registration">Sign Up</a>
@@ -95,46 +87,46 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header"><%= productDetail.productName %>
-                    <small><%= productDetail.shortDesc %></small>
+                    <small><%= productDetail.shortDesc%></small>
                 </h1>
             </div>
         </div>
         <!-- /.row -->
 
-        <!-- Portfolio Item Row -->
         <div class="row">
-
-            <div class="col-md-8">
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img class="img-responsive" src="<%=productDetail.imageUrl%>" alt="">
+            <div class="col-md-6">
+                <h3>Enter order details</h3>
+                <form name="addOrder" action="/rest/addorder" method="POST" id="contactForm" novalidate>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Price:</label>
+                            <input type="text" class="form-control" id="price" name="price" value="<%=productDetail.price%>" readonly>
+                            <p class="help-block"></p>
                         </div>
                     </div>
-                </div>
-            </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Quantity:</label>
+                            <input type="text" class="form-control" id="quantity" name="quantity" value="1" required data-validation-required-message="Please enter quantity.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Total:</label>
+                            <input type="text" class="form-control" id="total" name="total" value="<%=productDetail.price%>">
+                        </div>
+                    </div>
 
-            <div class="col-md-4">
-                <h3>Product Details</h3>
-                <table class="table">
-                    <tbody>
-                        <% details = productDetail.details[0];
-                        for(key in details) {%>
-                        <tr>
-                            <td><%=key%></td>
-                            <td><%=details[key]%></td>
-                        </tr>
-                        <% } %>
-                        <tr>
-                            <td colspan= 2 ><a href="/browse/product/buy/<%=productDetail._id%>">BUY</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <input type="hidden" id="customerId" name="customerId" value="3"></input>
+                    <input type="hidden" id="productId" name="productId" value="1"></input>
+                    <input type="text" id="paymenttype" name="paymenttype" value="credit"></input>
+
+                    <button type="submit" class="btn btn-primary">Place order</button>
+                </form>
             </div>
+            <!-- /.row -->
 
         </div>
-        <!-- /.row -->
 
         <hr>
 

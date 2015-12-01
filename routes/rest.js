@@ -102,7 +102,8 @@ function addOrderDetails(query,arr,callback)
  */
 var payId;
 app.post('/addorder', function(req, res) {
-    //console.log(req);
+
+    console.log("addorder");
 
     var orderDate= new Date();
     var shippingDate= new Date();
