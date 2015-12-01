@@ -20,14 +20,33 @@ router.get('/category/:category', function(req, res, next) {
 			});
 });
 
-router.get('/product/:productId', function(req, res, next) {
-	catalog.findById(req.param('productId'), 
+router.get("/product/buy/:productId", function(req, res, next){
+
+	console.log("<<<<<<<<PURCHSING>>>>>>>>>>>>")
+	productId = req.params.productId;
+
+	catalog.findById(productId, 
 		function(err, data) {
 			if (err) { return next(err); }
 	   			if (!data) { return next(new Error("can't find product")); }
-			   
-			    res.render('productDetailView', {productDetail : data});
+			   	
+			    res.render('purchaseProductView', {productDetail : data});	
 		});
 });
 
+router.get('/product/:productId', function(req, res, next) {
+	productId = req.params.productId;
+
+	catalog.findById(productId, 
+		function(err, data) {
+			if (err) { return next(err); }
+	   			if (!data) { return next(new Error("can't find product")); }
+			   	
+			    res.render('productDetailView', {productDetail : data});	
+		});
+});
+
+var findProductById = function(productId) {
+	
+}
 module.exports = router;
