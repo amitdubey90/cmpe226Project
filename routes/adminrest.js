@@ -71,6 +71,24 @@ app.get('/admin/salesAnalytics', function(req,res){
 });
 
 
+app.get('/admin/salesZipcode', function(req,res){ 
+
+
+
+        var query="select * from (Select SUM(SF.TotalSales) as 'sales', C.CustomerZipCode from sales_fact_table SF, customer C where C.CustomerKey= SF.CustomerKey  GROUP BY C.CustomerZipCode) as T order by T.sales desc limit 5 ";
+
+
+    connectionStar.query(query, function (err,result) {  
+        if(err){
+            throw err;
+        }
+        else{
+            console.log(result[2].CustomerZipCode+"asdasd");
+        res.render('salesZipcode',{data: result});
+        }                    
+    });
+});
+
 
 
 app.get('/admin/customers', function(req,res){ 
@@ -85,6 +103,10 @@ app.get('/admin/customers', function(req,res){
         }                  
     });
 });
+
+
+
+
 
 app.get('/admin/products', function(req,res){
 
