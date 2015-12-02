@@ -125,9 +125,6 @@ app.get('/home', function(req, res) {
 
 app.get('/getMonthlySales', function(req, res) {
     console.log("fetchig sales data")
-    // var query = "SELECT YEAR(saleDate) AS year, MONTH(saleDate) AS Month, "+
-    // " SUM(totalSales) AS TotalSales FROM cmpe226star.sales_fact_table"+
-    // " where year(saleDate) = year(CURDATE()) GROUP BY YEAR(saleDate), MONTH(saleDate);";
 
     var query = "select totalSales, saleDate from cmpe226star.sales_fact_table order by saleDate";
     connection.query(query, function (err,result) {  
