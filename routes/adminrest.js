@@ -23,10 +23,6 @@ var data = {
         "error":1
     };
 
-app.get('/admin', function(req,res) {
-  res.json("hello world from catalog");
-});
-
 app.get('/admin/orders', function(req,res){ 
 
     //var query="SELECT orders.OrderId, OrderDate, ShippingDate, OrderStatus,ProductId, TotalPrice, Quantity from orders, orderdetails where orders.OrderId = orderdetails.OrderId;";
@@ -117,6 +113,39 @@ app.get('/admin/products', function(req,res){
         }
         else{
         res.render('productInformation',{data: result});
+        }                    
+    });
+});
+
+/* Admin home page */
+app.get('/home', function(req, res) {
+
+    res.render('adminDashboard')
+});
+
+app.get('/getMonthlySales', function(req, res) {
+    console.log("fetchig sales data")
+    // var query = "SELECT YEAR(saleDate) AS year, MONTH(saleDate) AS Month, "+
+    // " SUM(totalSales) AS TotalSales FROM cmpe226star.sales_fact_table"+
+    // " where year(saleDate) = year(CURDATE()) GROUP BY YEAR(saleDate), MONTH(saleDate);";
+
+    var query = "select totalSales, saleDate from cmpe226star.sales_fact_table order by saleDate";
+    connection.query(query, function (err,result) {  
+         if(err){
+            console.log(err);
+            throw err;
+        }
+        else{
+            response = [];
+            for (i = 0; i < result.length; i++) {
+                temp = [];
+                //temp.push(Date.UTC(2012, 2, 6, 10), Math.floor((Math.random() * 10) + 1));
+                var d = new Date(Date.parse(result[i].saleDate));
+                
+                temp.push(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), 10), result[i].totalSales);
+                response.push(temp);
+            }
+            res.json(response);
         }                    
     });
 });

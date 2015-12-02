@@ -253,22 +253,18 @@ admin1.getAdminByUsername(function (err, results) {
             req.session.username = username2;   
             req.session.loggedIn = true;
             console.log(req.session.username);                         
-            res.redirect('/adminDashBoard');  
+            res.redirect('/adminrest/home');  
             return;  
           
         } else {  
 
   res.locals.error = 'Admin Username or password error.';  
             res.render('adminLogin',{title: apptitle});  
-            return;  
-
-          
+            return;            
         }      
     }); 
-
-
-
 });
+
 router.post('/login', function(req, res) {
   console.log("asdsadas");
   var user1 = new User({

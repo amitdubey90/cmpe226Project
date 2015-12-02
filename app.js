@@ -15,7 +15,6 @@ mongoose.connect('mongodb://cmpe226:project226@ds057934.mongolab.com:57934/produ
 require('./model/catalogModel');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var catalog = require('./routes/catalog');
 var rest = require('./routes/rest');
 var adminDashBoard = require('./routes/adminDashBoard');
@@ -50,7 +49,6 @@ app.use(function (req, res, next) {
 });
 
 app.use('/user', routes);
-app.use('/users', users);
 app.use('/browse', catalog);
 app.use('/rest', rest);
 app.use('/adminDashBoard', adminDashBoard);

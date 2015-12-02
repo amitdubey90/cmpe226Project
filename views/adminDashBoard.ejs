@@ -1,106 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Chor Bazar Admin Dashboard</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <title>Chor Bazar Admin Dashboard</title><!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet"><!-- Custom CSS -->
     <link href="/css/modern-business.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
     <!-- Custom Fonts -->
-    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type=
+    "text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+        <![endif]-->
 </head>
-
 <body>
-
-  
-
-   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               <a class="navbar-brand" href="/">Welcome Admin</a>
-
+                <button class="navbar-toggle" data-target=
+                "#bs-example-navbar-collapse-1" data-toggle="collapse" type=
+                "button"><span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                <span class="icon-bar"></span></button> <a class="navbar-brand"
+                href="/">Chor Bazar</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id=
+            "bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <%
+                    if(req.session.loggedIn === true) {
+                        %>
                     <li>
-                        <a href="/adminrest/admin/customers">Customer Information</a>
+                        <a href=
+                        "/user/details/"><%= req.session.username %></a>
                     </li>
                     <li>
-                        <a href="/adminrest/admin/orders">Order Information</a>
+                        <a href="/user/logout">Logout</a>
+                    </li><%} else { %>
+                    <li>
+                        <a href="/user/login">Login</a>
                     </li>
                     <li>
-                        <a href="/adminrest/admin/products">Product Information</a>
-                    </li>
-                    <!-- <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-item.html">Single Portfolio Item</a>
-                            </li>
-                        </ul>
-                    </li> -->
+                        <a href="/user/registration">Sign Up</a>
+                    </li><%} %>
                 </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
     </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class=
+            "main">
+                <h1 class="page-header">Admin Dashboard</h1>
+                <div class="row placeholders">
+                    <a href="/adminrest/admin/customers">
+                        <div class="col-xs-6 col-sm-4 placeholder">
+                            <img alt="Generic placeholder thumbnail" class=
+                            "img-responsive" height="200" src=
+                            "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+                            width="200">
+                            <h4>Customer Information</h4>
+                        </div>
+                    </a>
+                    <a href="/adminrest/admin/orders">
+                        <div class="col-xs-6 col-sm-4 placeholder">
+                            <img alt="Generic placeholder thumbnail" class=
+                            "img-responsive" height="200" src=
+                            "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+                            width="200">
+                            <h4>Order Information</h4>
+                        </div>
+                    </a>
+                    <a href="/adminrest/admin/products">
+                        <div class="col-xs-6 col-sm-4 placeholder">
+                            <img alt="Generic placeholder thumbnail" class=
+                            "img-responsive" height="200" src=
+                            "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+                            width="200">
+                            <h4>Product Information</h4>
+                        </div>
+                    </a>
+                </div>
+                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                <!-- <h2 class="sub-header">Section title</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Header</th>
+                                <th>Header</th>
+                                <th>Header</th>
+                                <th>Header</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1,001</td>
+                                <td>Lorem</td>
+                                <td>ipsum</td>
+                                <td>dolor</td>
+                                <td>sit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
 
-    <!-- jQuery -->
-    <script src="/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
+            </div>
+        </div>
+    </div><!-- jQuery -->
+    <script src="/js/jquery.js">
+    </script> <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js">
     </script>
-
-   <h1> <a href="adminrest/admin/salesAnalytics">Sales Analytics</a> </h1>
-
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript" src="/js/adminHomeChart.js"></script>
 </body>
-
 </html>
