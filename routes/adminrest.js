@@ -150,9 +150,23 @@ app.get('/getMonthlySales', function(req, res) {
     });
 });
 
+
 var resdata={
     "response":1
 }
+
+
+app.get('/admin/drill', function(req,res){
+
+  
+        res.render('drill');
+    
+});
+
+app.post('/admin/temp', function(req,res){
+    console.log('asdasd');
+    res.json('ok');
+    });
 
 app.post('/admin/salesdrill', function(req,res){
 
@@ -160,34 +174,33 @@ app.post('/admin/salesdrill', function(req,res){
     var verb=req.body.drill;
 
     if(verb=="normal"){
-        connection.query("SELECT YEAR(SaleDate) AS year, QUARTER(SaleDate) AS quarter, SUM(UnitsSold)"+
+        connectionStar.query("SELECT YEAR(SaleDate) AS year, QUARTER(SaleDate) AS quarter, SUM(UnitsSold)"+
                             "AS unitsSold FROM sales_fact_table GROUP BY YEAR(SaleDate), QUARTER(SaleDate)", function (err,result) {  
          if(err){
             throw err;
         }
         else{
-        res.json(result);
+        res.render('drillNormal',{data: result});
         }                    
     });
     }
     else if(verb=="up"){
-        connection.query("SELECT YEAR(SaleDate) AS year,  SUM(UnitsSold) AS unitsSold FROM sales_fact_table GROUP BY YEAR(SaleDate)", function (err,result) {  
+        connectionStar.query("SELECT YEAR(SaleDate) AS year,  SUM(UnitsSold) AS unitsSold FROM sales_fact_table GROUP BY YEAR(SaleDate)", function (err,result) {  
          if(err){
             throw err;
         }
         else{
-        res.json(result);
+        res.render('drillUp',{data: result});
         }                    
     });
     }
     else if(verb=="down"){
-        connection.query("SELECT YEAR(SaleDate) AS year, MONTH(SaleDate) AS Month, SUM(UnitsSold) AS unitsSold FROM sales_fact_table"+
-                                    "GROUP BY YEAR(SaleDate), MONTH(SaleDate)", function (err,result) {  
+        connectionStar.query("SELECT YEAR(SaleDate) AS year, MONTH(SaleDate) AS Month, SUM(UnitsSold) AS unitsSold FROM sales_fact_table GROUP BY YEAR(SaleDate), MONTH(SaleDate)", function (err,result) {  
          if(err){
             throw err;
         }
         else{
-        res.json(result);
+        res.render('drillDown',{data: result});
         }                    
     });
     }

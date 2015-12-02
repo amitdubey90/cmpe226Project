@@ -1,0 +1,37 @@
+     <html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Chor Bazar</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+ <div class="container">
+                <div class="col-md-4 col-sm-6 col-md-offset-4">
+               <form class="form-drill" action="/adminrest/admin/salesdrill" method="POST">
+                        <h2 class="form-signin-heading">Please select drill options </h2>
+                       
+                       
+                        <input type="radio" name="drill" value="normal" checked> Normal
+                        <br>
+                        <input type="radio" name="drill" value="up"> Up
+                         <br>
+                        <input type="radio" name="drill" value="down"> Down
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">View</button>
+                    </form>
+</body>
+</html>

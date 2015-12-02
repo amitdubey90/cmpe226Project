@@ -1,0 +1,35 @@
+
+
+<head>
+
+ <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+
+</head>
+
+<h1>Drill Up View</h1>
+
+<table class="table">
+<tr class="warning">
+<th>Year</th>
+<th>Units Sold</th>
+
+
+
+<% for(var i=0; i < data.length; i++) { %>
+</tr>
+   <tr class="info">
+     <td><%= data[i].year %></td>
+     <td><%= data[i].unitsSold %></td>
+   
+    </tr>
+<% } %>
+</table>
