@@ -1,0 +1,50 @@
+
+
+<head>
+
+ <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.1.3"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.geom.js?2.1.3"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?2.1.3"></script>
+<style type="text/css">
+        .slice text {
+            font-size: 16pt;
+            font-family: Arial;
+        }   
+    </style>
+
+
+</head>
+<body>
+<h1>Order Information</h1>
+
+<table class="table">
+<tr class="warning">
+<th>OrderId</th>
+<th>PaymentId</th>
+<th>OrderDate</th>
+<th>ShippingDate</th>
+<th>OrderStatus</th>
+<th>ShipperId</th>
+
+<% for(var i=0; i < customerOrderDetail.length; i++) { %>
+
+</tr>
+   <tr class="info">
+     <td><%= customerOrderDetail[i].OrderId %></td>
+     <td><%= customerOrderDetail[i].PaymentId %></td>
+     <td><%= customerOrderDetail[i].OrderDate %></td>      
+     <td><%= customerOrderDetail[i].ShippingDate %></td>
+     <td><%= customerOrderDetail[i].OrderStatus %></td>
+     <td><%= customerOrderDetail[i].ShipperId %></td>
+    </tr>
+<% } %>
+</table>
+
+</body>

@@ -24,18 +24,18 @@ app.get('/customerDetails/:customerId', function(req,res){
             throw err;
         }
         else{
-        res.json(result);
+        res.render('customerInfo', {customerDetail : result});
         }                    
     });
 });
 
 app.get('/customerorders/:customerId', function(req,res){ 
-    connection.query("select * from orders where CustomerId="+req.params('customerId')+"", function (err,result) {  
+    connection.query("select * from orders where CustomerId='"+req.param('customerId')+"'", function (err,result) {  
          if(err){
             throw err;
         }
         else{
-        res.json(result);
+        res.render('customerOrdersInfo', {customerOrderDetail : result});
         }                  
     });
 });
