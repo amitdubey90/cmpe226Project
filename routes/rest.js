@@ -146,7 +146,7 @@ app.post('/addorder', function(req, res) {
                                 console.log("ERROR : ",err);            
                              } else {            
                                      //console.log(data1);
-                                     res.json("{status:ok}");
+                                     res.render('purchaseSuccess');
 
                              } 
                         });
