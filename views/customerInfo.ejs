@@ -30,7 +30,7 @@
                 "button"><span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span> <span class="icon-bar"></span>
                 <span class="icon-bar"></span></button> <a class="navbar-brand"
-                href="/adminrest/home">Chor Bazar</a>
+                href="/">Chor Bazar</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id=
@@ -62,35 +62,45 @@
                 <h2 class="sub-header">Customer Information</h2>
                 <div class="table-responsive">
                     <table class="table table-striped" id="detailsTable">
-                        <thead>
                             <tr>
-                                <th>CustomerId</th>
-                                <th>FirstName</th>
-                                <th>LastName</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Street</th>
-                                <th>City</th>
-                                <th>Zipcode</th>
-                                <th>State</th>
-                                <th>Country</th>
+                                <td>CustomerId</td><td><%= data[0].CustomerId %></td>
+                             </tr>
+                             <tr>
+                                <td>FirstName</td><td><%= data[0].FirstName %></td>      
+
                             </tr>
-                        </thead>
-                        <tbody>
-                        <% for(var i=0; i < data.length; i++) { %>
                             <tr>
-                                <td><%= data[i].CustomerId %></td>
-                                 <td><%= data[i].FirstName %></td>      
-                                 <td><%= data[i].LastName %></td>
-                                 <td><%= data[i].Phone %></td>
-                                 <td><%= data[i].Email %></td>
-                                 <td><%= data[i].Street %></td>
-                                 <td><%= data[i].City %></td>
-                                 <td><%= data[i].Zipcode %></td>
-                                 <td><%= data[i].State %></td>
-                                 <td><%= data[i].Country %></td>
+                                <td>LastName</td> <td><%= data[0].LastName %></td>
                             </tr>
-                            <% } %>
+                            <tr>
+                                <td>Phone</td>  <td><%= data[0].Phone %></td>
+
+                            </tr>
+                            <tr>
+                                <td>Email</td><td><%= data[0].Email %></td>
+
+                            </tr>
+                            <tr>
+                                <td>Street</td><td><%= data[0].Street %></td>
+
+                            <tr>
+                                <td>City</td>  <td><%= data[0].City %></td>
+
+                            </tr>
+                            <tr>
+                                <td>Zipcode</td> <td><%= data[0].Zipcode %></td>
+
+                            </tr>
+                            <tr>
+                                <td>State</td> <td><%= data[0].State %></td>
+
+                            </tr>
+                            <tr>
+                                <td>Country</td><td><%= data[0].Country %></td>
+
+                            </tr>
+                      
+                           
                         </tbody>
                     </table>
                 </div>

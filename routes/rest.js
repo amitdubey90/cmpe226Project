@@ -1,7 +1,7 @@
 var mysql = require("mysql");
 var express = require('express');
 var app = express.Router();
-
+var data;
 connection = mysql.createPool({
         host     : 'cmpe226.cpodi2zqj9hl.us-east-1.rds.amazonaws.com',
         user     : 'cmpe226',
@@ -19,23 +19,30 @@ app.get('/', function(req,res) {
 });
 
 app.get('/customerDetails/:customerId', function(req,res){ 
-    connection.query("select * from customers where CustomerId='"+req.param('customerId')+"'", function (err,result) {  
+    var customerId= req.param('customerId');
+    console.log(customerId+"id");
+    var query="select * from customers where CustomerId='"+customerId+"'";
+    console.log(query);
+    connection.query(query, function (err,result) {  
         if(err){
             throw err;
         }
         else{
-        res.render('customerInfo', {customerDetail : result});
+        res.render('customerInfo', {data : result});
         }                    
     });
 });
 
 app.get('/customerorders/:customerId', function(req,res){ 
-    connection.query("select * from orders where CustomerId='"+req.param('customerId')+"'", function (err,result) {  
+        var customerId= req.param('customerId');
+var query="select * from orders where CustomerId='"+customerId+"'";
+console.log(query);
+    connection.query(query, function (err,result) {  
          if(err){
             throw err;
         }
         else{
-        res.render('customerOrdersInfo', {customerOrderDetail : result});
+        res.render('customerOrdersInfo', {data : result});
         }                  
     });
 });
