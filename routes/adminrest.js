@@ -96,7 +96,7 @@ app.get('/admin/customers', function(req,res){
         else{
         //res.json(result);
         console.log("bazar"+JSON.stringify(result));
-        res.render('customerInfo',{data: result});
+        res.render('customerInformation',{data: result});
         }                  
     });
 });

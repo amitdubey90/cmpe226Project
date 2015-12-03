@@ -37,10 +37,10 @@ $(function () {
             type: 'pie'
         },
         title: {
-            text: 'Browser market shares. January, 2015 to May, 2015'
+            text: 'Quarterly Sales in USD for 2015'
         },
         subtitle: {
-            text: 'Click the slices to view versions. Source: netmarketshare.com.'
+            text: 'Click the slices to view versions.'
         },
         plotOptions: {
             series: {

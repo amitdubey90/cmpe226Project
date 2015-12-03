@@ -17,7 +17,7 @@ google.load("visualization", "1.1", {packages:["bar"]});
         var options = {
           chart: {
             title: '',
-            subtitle: 'Sales'
+            subtitle: ''
           },
           bars: 'horizontal' // Required for Material Bar Charts.
         };
