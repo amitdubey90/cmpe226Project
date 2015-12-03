@@ -79,8 +79,9 @@ app.get('/admin/salesZipcode', function(req,res){
             throw err;
         }
         else{
-            console.log(result[2].CustomerZipCode+"asdasd");
-        res.render('salesZipcode',{data: result});
+           // console.log(result[2].CustomerZipCode+"asdasd");
+        // res.render('salesZipcode',{data: result});
+        res.json(result)
         }                    
     });
 });
@@ -126,7 +127,7 @@ app.get('/home', function(req, res) {
 app.get('/getMonthlySales', function(req, res) {
     console.log("fetchig sales data")
 
-    var query = "select totalSales, saleDate from cmpe226star.sales_fact_table order by saleDate";
+    var query = "select totalSales, saleDate from cmpe226star.sales_fact_table where year(saleDate) = year(CURDATE()) order by saleDate ";
     connection.query(query, function (err,result) {  
          if(err){
             console.log(err);
@@ -153,56 +154,33 @@ var resdata={
 }
 
 
-app.get('/admin/drill', function(req,res){
-
-  
-        res.render('drill');
-    
+app.get('/sales/getQuarterlySales', function(req,res){
+    sqlQuery = "SELECT QUARTER(SaleDate) AS quarter, SUM(UnitsSold) "+
+                        "AS unitsSold FROM sales_fact_table  where year(saleDate) = year(CURDATE())"+
+                        " GROUP BY YEAR(SaleDate), QUARTER(SaleDate)";
+    connectionStar.query(sqlQuery, function (err,result) {  
+         if(err){
+            throw err;
+        }
+        else{
+        res.json(result);
+    }  //res.render('drill');
+    });
 });
 
-app.post('/admin/temp', function(req,res){
-    console.log('asdasd');
-    res.json('ok');
-    });
+    app.get('/sales/drillForQuarter/', function(req,res){
 
-app.post('/admin/salesdrill', function(req,res){
-
-    console.log(req.body.drill);
-    var verb=req.body.drill;
-
-    if(verb=="normal"){
-        connectionStar.query("SELECT YEAR(SaleDate) AS year, QUARTER(SaleDate) AS quarter, SUM(UnitsSold)"+
-                            "AS unitsSold FROM sales_fact_table GROUP BY YEAR(SaleDate), QUARTER(SaleDate)", function (err,result) {  
-         if(err){
+        sqlQuery = "SELECT MONTH(SaleDate) AS Month, SUM(UnitsSold) AS unitsSold FROM sales_fact_table"+
+        " GROUP BY YEAR(SaleDate), MONTH(SaleDate)";
+        connectionStar.query(sqlQuery, function (err,result) {  
+           if(err){
             throw err;
         }
         else{
-        res.render('drillNormal',{data: result});
+            res.json(result);
         }                    
+        });
     });
-    }
-    else if(verb=="up"){
-        connectionStar.query("SELECT YEAR(SaleDate) AS year,  SUM(UnitsSold) AS unitsSold FROM sales_fact_table GROUP BY YEAR(SaleDate)", function (err,result) {  
-         if(err){
-            throw err;
-        }
-        else{
-        res.render('drillUp',{data: result});
-        }                    
-    });
-    }
-    else if(verb=="down"){
-        connectionStar.query("SELECT YEAR(SaleDate) AS year, MONTH(SaleDate) AS Month, SUM(UnitsSold) AS unitsSold FROM sales_fact_table GROUP BY YEAR(SaleDate), MONTH(SaleDate)", function (err,result) {  
-         if(err){
-            throw err;
-        }
-        else{
-        res.render('drillDown',{data: result});
-        }                    
-    });
-    }
-    
-});
 
 app.post('/admin/pivot', function(req,res){
 
