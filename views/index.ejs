@@ -51,7 +51,10 @@
                         if(req.session.loggedIn === true) {
                             %>
                             <li>
-                                <a href="/user/details/"><%= req.session.username %></a>                      
+                                <a href="/rest/customerDetails/<%-req.session.customerId %>"><%= req.session.username %></a>                      
+                            </li>
+                             <li>
+                                <a href="/rest/customerorders/<%-req.session.customerId %>">My Orders</a>                      
                             </li>
                             <li>
                                 <a href="/user/logout">Logout</a>
