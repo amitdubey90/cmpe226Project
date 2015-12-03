@@ -1,12 +1,11 @@
 $(function () {
     $.getJSON('http://localhost:3000/adminrest/getMonthlySales', function (data) {
-        console.log(data)
-        $('#container').highcharts({
+        $('#container2').highcharts({
             chart: {
                 zoomType: 'x'
             },
             title: {
-                text: 'Sales in US Dollar'
+                text: 'Sales in US Dollar for '+ new Date().getFullYear()
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
